@@ -8,9 +8,9 @@ stages:
 
 build-docker:
   variables:
-    DOCKER_DRIVER: overlay2
-    DOCKER_TLS_CERTDIR: ""
-    
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ""
+
   services:
   - docker:19.03.6-dind
   before_script:
