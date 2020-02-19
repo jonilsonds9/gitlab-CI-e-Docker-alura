@@ -21,6 +21,7 @@ build-docker:
     - docker push jonilsonds9/minha-imagem:latest
 
 build-project:
+  image: jonilsonds9/minha-imagem:latest
   services:
     - docker:19.03.0-dind
     - mysql:5.7
