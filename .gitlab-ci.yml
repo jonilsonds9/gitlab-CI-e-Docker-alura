@@ -6,16 +6,14 @@ stages:
 - test
 - deploy
 
+variables:
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ''
+
 build-docker:
   services:
-    - name: docker:19.03.6-dind
-      entrypoint: ["env", "-u", "DOCKER_HOST"]
-  variables:
-    DOCKER_HOST: tcp://docker:2375
-    DOCKER_DRIVER: overlay2
-    DOCKER_TLS_CERTDIR: ''
-  
-  
+  - docker:19.03.6-dind
   before_script:
   - docker info
   - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
