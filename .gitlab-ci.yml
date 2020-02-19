@@ -41,7 +41,5 @@ build-project:
   dependencies:
     - build-docker
   script:
-    - echo 'runner'
-    - python -v
-    # - python manage.py makemigrations
-    # - python manage.py migrate
+    - python manage.py makemigrations
+    - python manage.py migrate
