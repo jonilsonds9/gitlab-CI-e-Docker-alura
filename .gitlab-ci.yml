@@ -16,14 +16,14 @@ build-docker:
 
   stage: pre-build
   script:
-  - docker build -t minha-imagem .
-  - docker tag minha-imagem jonilsonds9/minha-imagem:latest
-  - docker push jonilsonds9/minha-imagem:latest
+    - docker build -t minha-imagem .
+    - docker tag minha-imagem jonilsonds9/minha-imagem:latest
+    - docker push jonilsonds9/minha-imagem:latest
 
 build-project:
   services:
-  - docker:18.09.7-dind
-  - mysql:5.7
+    - docker:18.09.7-dind
+    - mysql:5.7
   variables:
     MYSQL_USER: 'devops_dev'
     MYSQL_PASSWORD: 'mestre'
@@ -38,9 +38,9 @@ build-project:
 
   stage: build
   tags:
-  - executor-tarefas
+    - executor-tarefas
   dependencies:
-  - build-docker
+    - build-docker
   script:
-  - python manage.py makemigrations
-  - python manage.py migrate
+    - python manage.py makemigrations
+    - python manage.py migrate
