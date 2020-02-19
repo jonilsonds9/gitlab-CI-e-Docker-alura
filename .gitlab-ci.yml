@@ -1,4 +1,4 @@
-image: docker:19.03.0
+image: docker:18.09.7
 
 stages:
 - pre-build
@@ -6,13 +6,9 @@ stages:
 - test
 - deploy
 
-build-docker:
-  variables:
-    DOCKER_DRIVER: overlay2
-    DOCKER_TLS_CERTDIR: ""
-  
+build-docker:  
   services:
-    - docker:19.03.0-dind
+    - docker:18.09.7-dind
   
   before_script:
     - docker info
@@ -25,12 +21,8 @@ build-docker:
   - docker push jonilsonds9/minha-imagem:latest
 
 build-project:
-  variables:
-    DOCKER_DRIVER: overlay2
-    DOCKER_TLS_CERTDIR: ""
-
   services:
-  - docker:19.03.0-dind
+  - docker:18.09.7-dind
   - mysql:5.7
   variables:
     MYSQL_USER: 'devops_dev'
