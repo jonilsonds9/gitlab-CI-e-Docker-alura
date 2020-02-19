@@ -47,6 +47,7 @@ build-project:
     - python manage.py migrate
 
 test-project:
+  image: jonilsonds9/minha-imagem:latest
   stage: test
   services:
     - docker:19.03.0-dind
