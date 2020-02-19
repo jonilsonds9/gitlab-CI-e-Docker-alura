@@ -6,18 +6,18 @@ stages:
 - test
 - deploy
 
-variables:
-  DOCKER_DRIVER: overlay2
-  DOCKER_TLS_CERTDIR: ""
-
-services:
-  - docker:19.03.6-dind
-
-before_script:
-  - docker info
-  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
-
 build-docker:
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ""
+  
+  services:
+    - docker:19.03.6-dind
+  
+  before_script:
+    - docker info
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
+    
   stage: pre-build
   script:
   - docker build -t minha-imagem .
