@@ -6,10 +6,10 @@ stages:
 - test
 - deploy
 
-build-docker:
-  services:
+services:
   - docker:19.03-dind
-      
+
+build-docker:      
   before_script:
   - docker info
   - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
