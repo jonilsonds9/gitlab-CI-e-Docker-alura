@@ -76,8 +76,8 @@ deploy-project:
   stage: deploy
   tags:
     - executor-deploy
-  dependencies:
-    - test-project
+  # dependencies:
+  #   - test-project
   script:
     - tar cfz arquivos.tgz *
     - scp arquivos.tgz jonilson@192.168.1.3:/home/jonilson/alura/11-Gitlab-CI-e-Docker/deploys
