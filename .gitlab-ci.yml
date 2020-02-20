@@ -81,7 +81,7 @@ deploy-project:
   script:
     - tar cfz arquivos.tgz *
     - scp arquivos.tgz jonilson@192.168.1.3:/home/jonilson/alura/11-Gitlab-CI-e-Docker/deploys
-    - ssh jonilson@192.168.1.3 'cd /home/jonilson/alura/11-Gitlab-CI-e-Docker/deploys/; tar xfz arquivos.tgz; docker-compose up -d'
+    - ssh jonilsons@192.168.1.3 'cd /home/jonilson/alura/11-Gitlab-CI-e-Docker/deploys/; tar xfz arquivos.tgz; docker-compose up -d'
 
 notificacao-sucesso:
   stage: notificacao
