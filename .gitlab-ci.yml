@@ -81,7 +81,7 @@ deploy-project:
   script:
     - tar cfz arquivos.tgz *
     - scp arquivos.tgz jonilson@192.168.1.3:/home/jonilson/alura/11-Gitlab-CI-e-Docker/deploys
-    - ssh jonilsons@192.168.1.3 'cd /home/jonilson/alura/11-Gitlab-CI-e-Docker/deploys/; tar xfz arquivos.tgz; docker-compose up -d'
+    - ssh jonilson@192.168.1.3 'cd /home/jonilson/alura/11-Gitlab-CI-e-Docker/deploys/; tar xfz arquivos.tgz; docker-compose up -d'
 
 notificacao-sucesso:
   stage: notificacao
@@ -89,7 +89,7 @@ notificacao-sucesso:
     - executor-deploy
   when: on_success
   script:
-    - echo "tudo deu certo"
+    - sh notificacaoSucesso.sh
 
 notificacao-falhas:
   stage: notificacao
@@ -97,4 +97,4 @@ notificacao-falhas:
     - executor-deploy
   when: on_failure
   script:
-    - echo "deu errado"
+    - sh notificacaoFalha.sh
